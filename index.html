@@ -1,128 +1,697 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#4b071d">
-  <meta name="description" content="The Beauty Layer Beauty Parlour in Soda Saroli, Dehradun. Bridal makeup, facials, hair, waxing, nails and more.">
-  <title>The Beauty Layer | Beauty Parlour, Dehradun</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>The Beauty Layer | Dehradun</title>
+<meta name="description" content="The Beauty Layer Beauty Parlour, Soda Saroli, Dehradun. Bridal makeup, facial, hair spa, waxing and more.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+:root {
+ --wine:#4c071d;
+ --wine2:#700d2c;
+ --gold:#c99b52;
+ --cream:#fff8ed;
+ --white:#fff;
+ --ink:#30221f;
+ --muted:#8b7770;
+ --border:#eadbc9;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink)}
+a{text-decoration:none;color:inherit}
+button{font:inherit;cursor:pointer}
+img,video{max-width:100%}
+.topline{background:var(--wine);color:#f5dba9;text-align:center;padding:10px;font-size:11px;letter-spacing:2px}
+header{height:86px;display:flex;align-items:center;justify-content:space-between;padding:0 6%;background:#fffdf8;position:sticky;top:0;z-index:20;border-bottom:1px solid var(--border)}
+.logo{font-family:'Playfair Display',serif;font-size:22px;color:var(--wine);font-weight:bold}
+.logo small{display:block;font-family:'DM Sans';font-size:9px;letter-spacing:5px;text-align:center}
+nav{display:flex;gap:27px;font-size:13px}
+nav a:hover{color:var(--gold)}
+.btn{display:inline-block;background:var(--wine);color:white;padding:15px 23px;border-radius:3px;font-size:12px;letter-spacing:1px;border:1px solid var(--wine);transition:.3s}
+.btn:hover{background:var(--gold);border-color:var(--gold);color:#fff}
+.btn-light{background:var(--cream);color:var(--wine);border-color:var(--cream)}
+.menu{display:none;background:none;border:0;font-size:25px;color:var(--wine)}
+.hero{min-height:620px;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:65px 8%;gap:45px;background:linear-gradient(110deg,#fff8ed 55%,#f1dfc8 55%)}
+.eyebrow{font-size:10px;letter-spacing:3px;color:var(--gold);font-weight:700;margin-bottom:20px}
+h1,h2{font-family:'Playfair Display',serif;color:var(--wine);font-weight:500}
+h1{font-size:clamp(42px,6vw,76px);line-height:1.12;margin-bottom:25px}
+h1 em,h2 em{color:var(--gold)}
+.hero-copy>p:not(.eyebrow){line-height:1.9;color:var(--muted);max-width:440px;margin-bottom:30px}
+.hero-actions{display:flex;align-items:center;gap:25px;flex-wrap:wrap}
+.text-link{font-size:12px;border-bottom:1px solid var(--gold);padding-bottom:5px}
+.hero-visual{height:500px;position:relative}
+.hero-photo{width:100%;height:100%;background:#e5cbb3 url('https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=1100') center 30%/cover;border-radius:48% 48% 4px 4px}
+.hero-stamp{position:absolute;bottom:25px;left:-35px;background:var(--cream);padding:22px 28px;box-shadow:0 8px 30px #0002;color:var(--gold);font-size:11px;letter-spacing:2px}
+.hero-stamp h2{font-size:17px;margin-top:7px}
+.section{padding:95px 7%}
+.heading{text-align:center;margin:0 auto 48px}
+.heading h2{font-size:clamp(34px,4vw,52px);margin-bottom:12px}
+.heading>p:last-child{color:var(--muted);font-size:13px;line-height:1.8}
+.service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.service{background:white;border:1px solid var(--border);padding:30px 25px;transition:.3s}
+.service:hover{transform:translateY(-6px);box-shadow:0 12px 30px #4c071d12}
+.service-icon{width:45px;height:45px;border:1px solid var(--gold);border-radius:50%;display:grid;place-items:center;color:var(--gold);font-size:23px;margin-bottom:20px}
+.service h3{font-family:'Playfair Display';font-size:21px;color:var(--wine);margin-bottom:9px}
+.service p{font-size:12px;line-height:1.7;color:var(--muted)}
+.bridal{display:grid;grid-template-columns:1fr 1fr;background:var(--wine);color:white;min-height:450px}
+.bridal-img{background:url('https://images.unsplash.com/photo-1595959183082-7b570b7e08e2?w=1100') center/cover;min-height:450px}
+.bridal-copy{padding:70px 12%;display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
+.bridal-copy h2{color:white;font-size:clamp(34px,4vw,52px);margin-bottom:20px}
+.bridal-copy p:not(.eyebrow){line-height:1.9;color:#ead6d6;font-size:13px;margin-bottom:28px}
+.gallery-section{background:#fffdf8}
+.filters{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:35px}
+.filter{padding:10px 19px;border:1px solid var(--border);background:white;color:var(--wine);font-size:11px}
+.filter.active,.filter:hover{background:var(--wine);color:white}
+.media-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+.media-card{position:relative;background:#eee;aspect-ratio:4/5;overflow:hidden;cursor:pointer}
+.media-card img,.media-card video{width:100%;height:100%;object-fit:cover;transition:.4s}
+.media-card:hover img{transform:scale(1.05)}
+.media-title{position:absolute;bottom:0;left:0;right:0;padding:30px 15px 15px;color:white;background:linear-gradient(transparent,#000a);font-size:13px}
+.empty{grid-column:1/-1;text-align:center;padding:50px;color:var(--muted);font-size:13px}
+.experience{background:#f3e9db}
+.experience-card{background:white;padding:25px;border:1px solid var(--border);font-size:13px;line-height:1.8}
+.experience-card h3{font-family:'Playfair Display';color:var(--wine);margin-bottom:10px}
+.experience-card video,.experience-card img{width:100%;max-height:260px;object-fit:cover;margin-top:12px}
+.experience-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.contact{background:var(--wine);padding:75px 8%;color:white;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.contact h2{color:white;font-size:clamp(35px,4vw,55px)}
+.contact-info p{margin:17px 0;font-size:14px}
+.contact-info span{display:block;color:#e6b96d;font-size:10px;letter-spacing:2px;margin-bottom:5px}
+footer{background:#320313;color:#e8cda8;text-align:center;padding:40px 20px;font-size:11px;line-height:2}
+footer h2{color:white;font-size:26px}
+footer a{margin:0 8px}
+.lightbox{display:none;position:fixed;inset:0;background:#16040beF;z-index:100;align-items:center;justify-content:center;padding:25px}
+.lightbox.open{display:flex}
+.lightbox-content img,.lightbox-content video{max-height:85vh;max-width:90vw}
+.close-lightbox{position:absolute;right:25px;top:15px;color:white;background:none;border:0;font-size:40px}
+.admin-trigger{font-size:10px;opacity:.5;cursor:pointer}
+
+/* ADMIN */
+.admin-overlay{display:none;position:fixed;inset:0;background:#1b0913ed;z-index:200;overflow:auto;padding:25px}
+.admin-box{background:#fffaf2;max-width:950px;margin:25px auto;padding:30px;border-radius:8px}
+.admin-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px;gap:10px}
+.admin-top h2{font-size:30px}
+.admin-close{background:var(--wine);color:white;border:0;padding:10px 15px}
+.admin-form{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0}
+.admin-form input,.admin-form select,.admin-form textarea{width:100%;padding:13px;border:1px solid var(--border);background:white;font:13px 'DM Sans'}
+.admin-form textarea{grid-column:1/-1;min-height:80px}
+.admin-form .full{grid-column:1/-1}
+.admin-form label{font-size:11px;color:var(--wine);display:block;margin-bottom:6px}
+.admin-btn{padding:12px 17px;background:var(--wine);color:white;border:0;margin:5px 4px 5px 0;font-size:12px}
+.admin-btn.danger{background:#a32b35}
+.admin-btn.secondary{background:#826b55}
+.admin-list{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
+.admin-item{background:white;border:1px solid var(--border);padding:10px;min-width:0}
+.admin-item img,.admin-item video{width:100%;height:130px;object-fit:cover}
+.admin-item p{font-size:12px;margin:8px 0}
+.crop-tools{display:flex;gap:12px;flex-wrap:wrap;margin:10px 0}
+.crop-tools label{font-size:11px}
+.crop-tools input{width:100px}
+#adminStatus{font-size:12px;color:var(--wine);margin:12px 0;white-space:pre-wrap}
+#adminDashboard{display:none}
+.login-form{max-width:400px;margin:30px auto}
+.login-form input{width:100%;padding:14px;border:1px solid var(--border);margin:8px 0}
+@media(max-width:850px){
+ header{padding:0 4%}
+ nav{gap:12px}
+ .hero{padding:50px 5%}
+}
+@media(max-width:650px){
+ header{height:70px}
+ nav{display:none;position:absolute;top:70px;left:0;right:0;background:white;padding:25px;flex-direction:column;box-shadow:0 10px 20px #0001}
+ nav.show{display:flex}
+ .menu{display:block}
+ header>.btn{display:none}
+ .hero{grid-template-columns:1fr;padding:55px 7%;gap:35px}
+ .hero-visual{height:370px}
+ .hero-stamp{left:-10px}
+ .service-grid,.media-grid,.experience-grid{grid-template-columns:repeat(2,1fr)}
+ .bridal{grid-template-columns:1fr}
+ .bridal-img{min-height:300px}
+ .bridal-copy{padding:50px 8%}
+ .contact{grid-template-columns:1fr;padding:55px 8%}
+ .admin-box{padding:18px}
+ .admin-form{grid-template-columns:1fr}
+ .admin-form textarea,.admin-form .full{grid-column:auto}
+ .admin-list{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:390px){
+ .service-grid,.media-grid,.experience-grid,.admin-list{grid-template-columns:1fr}
+}
+</style>
 </head>
+
 <body>
-  <div class="topline">A little luxury, a lot of confidence <span>✦</span> Soda Saroli, Dehradun</div>
-  <header class="site-header">
-    <a class="brand" href="#home" aria-label="The Beauty Layer home">
-      <span class="brand-mark">✿</span><span>THE BEAUTY <b>LAYER</b><small>BEAUTY PARLOUR</small></span>
-    </a>
-    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
-    <nav id="mainNav">
-      <a href="#home">Home</a><a href="#services">Services</a><a href="#bridal">Bridal</a>
-      <a href="#gallery">Gallery</a><a href="#experiences">Experiences</a><a href="#contact">Contact</a>
-    </nav>
-    <a class="button button-small header-book" href="https://wa.me/919389172061?text=Hello%20The%20Beauty%20Layer%2C%20I%20would%20like%20to%20book%20an%20appointment." target="_blank" rel="noopener">Book an appointment ↗</a>
-  </header>
 
-  <main>
-    <section class="hero" id="home">
-      <div class="hero-copy">
-        <p class="eyebrow"><span></span> BEAUTY, WITH A PERSONAL TOUCH</p>
-        <h1>Feel beautiful.<br><em>Feel unforgettable.</em></h1>
-        <p class="hero-intro">A welcoming beauty space for the little self-care moments and the once-in-a-lifetime celebrations.</p>
-        <div class="hero-actions">
-          <a class="button" href="https://wa.me/919389172061?text=Hello%20The%20Beauty%20Layer%2C%20I%20would%20like%20to%20book%20an%20appointment." target="_blank" rel="noopener">Book on WhatsApp <span>↗</span></a>
-          <a class="text-link" href="#services">Explore our services <span>↓</span></a>
-        </div>
-        <div class="hero-note"><span class="note-star">✦</span><div><b>Made for your moment</b><small>Bridal · Skin · Hair · Beauty</small></div></div>
-      </div>
-      <div class="hero-visual">
-        <div class="hero-photo" role="img" aria-label="Bridal beauty inspiration"></div>
-        <div class="hero-stamp"><span>THE BEAUTY LAYER</span><b>BEAUTY<br>BEGINS<br>WITH YOU</b><i>✿</i></div>
-        <div class="hero-caption">Your glow, your way.</div>
-      </div>
-      <div class="hero-deco">✳</div>
-    </section>
+<div class="topline">✦ BEAUTY · ELEGANCE · CONFIDENCE ✦ SODA SAROLI, DEHRADUN</div>
 
-    <section class="trust-strip">
-      <div><b>01</b><span>Personalised care</span></div><i>✦</i>
-      <div><b>02</b><span>Beauty for every occasion</span></div><i>✦</i>
-      <div><b>03</b><span>Warm, welcoming experience</span></div>
-    </section>
+<header>
+<a href="#home" class="logo">THE BEAUTY LAYER<small>BEAUTY PARLOUR</small></a>
+<button class="menu" id="menuBtn">☰</button>
+<nav id="nav">
+<a href="#home">Home</a><a href="#services">Services</a>
+<a href="#bridal">Bridal</a><a href="#gallery">Gallery</a>
+<a href="#experiences">Experiences</a><a href="#contact">Contact</a>
+</nav>
+<a class="btn" href="https://wa.me/919389172061">BOOK APPOINTMENT ↗</a>
+</header>
 
-    <section class="section services-section" id="services">
-      <div class="section-heading">
-        <p class="eyebrow">A LITTLE SOMETHING FOR YOU</p>
-        <h2>Our <em>services</em></h2>
-        <p>From everyday self-care to your most special days.</p>
-      </div>
-      <div class="service-grid" id="serviceGrid">
-        <article class="service-card"><div class="service-icon">✿</div><h3>Facial</h3><p>Thoughtful skin care to help you feel fresh and renewed.</p></article>
-        <article class="service-card"><div class="service-icon">⌁</div><h3>Eyebrow</h3><p>Shape and define your look with a little attention to detail.</p></article>
-        <article class="service-card"><div class="service-icon">✧</div><h3>Waxing</h3><p>Beauty essentials for a smooth, feel-good finish.</p></article>
-        <article class="service-card"><div class="service-icon">❀</div><h3>Manicure & Pedicure</h3><p>A relaxing refresh from fingertips to toes.</p></article>
-        <article class="service-card"><div class="service-icon">♧</div><h3>Hair Cutting</h3><p>A fresh shape and style that feels like you.</p></article>
-        <article class="service-card"><div class="service-icon">♡</div><h3>Root Touch Up</h3><p>Keep your colour looking neat and beautifully refreshed.</p></article>
-        <article class="service-card"><div class="service-icon">☼</div><h3>Hair Spa</h3><p>Give your hair a little extra care and attention.</p></article>
-        <article class="service-card"><div class="service-icon">❋</div><h3>Heena Art</h3><p>Intricate henna details for celebrations and special moments.</p></article>
-        <article class="service-card"><div class="service-icon">✦</div><h3>Makeup</h3><p>Looks created to complement your style and occasion.</p></article>
-      </div>
-      <div class="center"><a class="button button-outline" href="https://wa.me/919389172061?text=Hello%2C%20please%20share%20your%20service%20details." target="_blank" rel="noopener">Ask about a service ↗</a></div>
-    </section>
+<main>
+<section class="hero" id="home">
+<div class="hero-copy">
+<p class="eyebrow">BEAUTY, WITH A PERSONAL TOUCH</p>
+<h1>Feel beautiful.<br><em>Feel unforgettable.</em></h1>
+<p>A welcoming beauty space for little self-care moments and once-in-a-lifetime celebrations.</p>
+<div class="hero-actions">
+<a class="btn" href="https://wa.me/919389172061">BOOK ON WHATSAPP ↗</a>
+<a class="text-link" href="#services">EXPLORE SERVICES ↓</a>
+</div>
+</div>
+<div class="hero-visual">
+<div class="hero-photo"></div>
+<div class="hero-stamp">THE BEAUTY LAYER<h2>BEAUTY BEGINS WITH YOU</h2></div>
+</div>
+</section>
 
-    <section class="bridal-section" id="bridal">
-      <div class="bridal-image"></div>
-      <div class="bridal-copy">
-        <p class="eyebrow">FOR YOUR ONCE-IN-A-LIFETIME MOMENT</p>
-        <h2>Every bride deserves<br><em>to feel extraordinary.</em></h2>
-        <p>Celebrate your special day with bridal makeup and pre-wedding makeup services. Get in touch to discuss your look and appointment.</p>
-        <a class="button button-light" href="https://wa.me/919389172061?text=Hello%20The%20Beauty%20Layer%2C%20I%20want%20to%20enquire%20about%20bridal%20makeup." target="_blank" rel="noopener">Enquire for bridal makeup ↗</a>
-      </div>
-    </section>
+<section class="section" id="services">
+<div class="heading">
+<p class="eyebrow">A LITTLE SOMETHING FOR YOU</p>
+<h2>Our <em>Services</em></h2>
+<p>From everyday self-care to your most special days.</p>
+</div>
+<div class="service-grid">
+<div class="service"><div class="service-icon">✿</div><h3>Facial</h3><p>Fresh and glowing skin care.</p></div>
+<div class="service"><div class="service-icon">⌁</div><h3>Eyebrow</h3><p>Perfect shaping and definition.</p></div>
+<div class="service"><div class="service-icon">✧</div><h3>Waxing</h3><p>Smooth and comfortable beauty care.</p></div>
+<div class="service"><div class="service-icon">❀</div><h3>Manicure & Pedicure</h3><p>Complete nail care and relaxation.</p></div>
+<div class="service"><div class="service-icon">♧</div><h3>Hair Cutting</h3><p>Beautiful haircuts and styling.</p></div>
+<div class="service"><div class="service-icon">♡</div><h3>Root Touch Up</h3><p>Refresh your hair colour.</p></div>
+<div class="service"><div class="service-icon">☼</div><h3>Hair Spa</h3><p>Relaxing hair nourishment.</p></div>
+<div class="service"><div class="service-icon">❋</div><h3>Heena Art</h3><p>Beautiful henna designs.</p></div>
+<div class="service"><div class="service-icon">✦</div><h3>Makeup</h3><p>Makeup for every occasion.</p></div>
+</div>
+</section>
 
-    <section class="section gallery-section" id="gallery">
-      <div class="section-heading split-heading">
-        <div><p class="eyebrow">A LOOK INSIDE OUR WORLD</p><h2>Beauty in <em>every detail</em></h2></div>
-        <p>Browse our work, moments and transformations.</p>
-      </div>
-      <div class="filter-row" id="galleryFilters">
-        <button class="filter active" data-filter="all">All</button>
-        <button class="filter" data-filter="makeup">Makeup</button>
-        <button class="filter" data-filter="hair">Hair</button>
-        <button class="filter" data-filter="skin">Skin</button>
-        <button class="filter" data-filter="henna">Heena art</button>
-        <button class="filter" data-filter="videos">Videos</button>
-      </div>
-      <div class="media-grid" id="galleryGrid">
-        <div class="empty-state">Our latest photos and videos will appear here.</div>
-      </div>
-    </section>
+<section class="bridal" id="bridal">
+<div class="bridal-img"></div>
+<div class="bridal-copy">
+<p class="eyebrow">YOUR SPECIAL DAY</p>
+<h2>Every bride deserves <em>to feel extraordinary.</em></h2>
+<p>Bridal Makeup and Pre-Wedding Makeup services for your unforgettable moments.</p>
+<a class="btn btn-light" href="https://wa.me/919389172061">ENQUIRE FOR BRIDAL MAKEUP ↗</a>
+</div>
+</section>
 
-    <section class="experience-section" id="experiences">
-      <div class="section-heading">
-        <p class="eyebrow">KIND WORDS & REAL MOMENTS</p>
-        <h2>Shared <em>experiences</em></h2>
-        <p>Customer stories, photos and videos from special moments.</p>
-      </div>
-      <div class="experience-grid" id="experienceGrid"><div class="empty-state">Customer experiences will appear here.</div></div>
-    </section>
+<section class="section gallery-section" id="gallery">
+<div class="heading">
+<p class="eyebrow">A LOOK INSIDE OUR WORLD</p>
+<h2>Beauty in <em>Every Detail</em></h2>
+<p>Explore our latest photos and videos.</p>
+</div>
+<div class="filters">
+<button class="filter active" data-filter="all">All</button>
+<button class="filter" data-filter="makeup">Makeup</button>
+<button class="filter" data-filter="hair">Hair</button>
+<button class="filter" data-filter="skin">Skin</button>
+<button class="filter" data-filter="henna">Heena Art</button>
+<button class="filter" data-filter="videos">Videos</button>
+</div>
+<div class="media-grid" id="galleryGrid"><p class="empty">Loading gallery...</p></div>
+</section>
 
-    <section class="contact-section" id="contact">
-      <div><p class="eyebrow">LET'S MAKE TIME FOR YOU</p><h2>Your next beauty<br><em>moment starts here.</em></h2></div>
-      <div class="contact-details">
-        <p><span>CALL / WHATSAPP</span><a href="tel:+919389172061">9389172061</a></p>
-        <p><span>VISIT US</span><b>Soda Saroli, Dehradun</b></p>
-        <a class="button button-light" href="https://wa.me/919389172061?text=Hello%20The%20Beauty%20Layer%2C%20I%20would%20like%20to%20book%20an%20appointment." target="_blank" rel="noopener">Chat with us ↗</a>
-      </div>
-    </section>
-  </main>
+<section class="section experience" id="experiences">
+<div class="heading">
+<p class="eyebrow">REAL PEOPLE, REAL EXPERIENCES</p>
+<h2>Shared <em>Experiences</em></h2>
+<p>Special moments and memories from our customers.</p>
+</div>
+<div class="experience-grid" id="experienceGrid">
+<p class="empty">Loading experiences...</p>
+</div>
+</section>
 
-  <footer><a class="brand footer-brand" href="#home"><span class="brand-mark">✿</span><span>THE BEAUTY <b>LAYER</b><small>BEAUTY PARLOUR</small></span></a><p>Beauty · Elegance · Confidence</p><small>© <span id="year"></span> The Beauty Layer. All rights reserved.</small></footer>
+<section class="contact" id="contact">
+<div><p class="eyebrow">LET'S MAKE TIME FOR YOU</p><h2>Your next beauty <em>moment starts here.</em></h2></div>
+<div class="contact-info">
+<p><span>CALL / WHATSAPP</span><a href="tel:+919389172061">9389172061</a></p>
+<p><span>VISIT US</span>Soda Saroli, Dehradun</p>
+<a class="btn btn-light" href="https://wa.me/919389172061">CHAT WITH US ↗</a>
+</div>
+</section>
+</main>
 
-  <div class="lightbox" id="lightbox" aria-hidden="true"><button id="lightboxClose" aria-label="Close">×</button><div id="lightboxContent"></div></div>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="config.js"></script>
-  <script src="app.js"></script>
+<footer>
+<h2>THE BEAUTY LAYER</h2>
+<p>Beauty · Elegance · Confidence</p>
+<p>© <span id="year"></span> The Beauty Layer. All rights reserved.</p>
+<p><a href="#home">Home</a><a href="#services">Services</a><a href="#contact">Contact</a></p>
+<p class="admin-trigger" id="adminTrigger">Owner Admin Login</p>
+</footer>
+
+<div class="lightbox" id="lightbox">
+<button class="close-lightbox" id="lightboxClose">×</button>
+<div class="lightbox-content" id="lightboxContent"></div>
+</div>
+
+<!-- OWNER ADMIN PANEL -->
+<div class="admin-overlay" id="adminOverlay">
+<div class="admin-box">
+<div class="admin-top">
+<h2>Owner Dashboard</h2>
+<button class="admin-close" id="adminClose">CLOSE ×</button>
+</div>
+
+<div id="loginPanel" class="login-form">
+<h3>Owner Login</h3>
+<p style="font-size:12px;color:#8b7770;margin:10px 0">Login with your authorized Supabase owner account.</p>
+<input type="email" id="email" placeholder="Owner email">
+<input type="password" id="password" placeholder="Password">
+<button class="admin-btn" id="loginBtn">LOGIN</button>
+</div>
+
+<div id="adminDashboard">
+<h3>Manage Website Content</h3>
+<p style="font-size:12px;color:#8b7770;margin:8px 0">Upload, replace, crop and manage gallery content.</p>
+
+<div class="admin-form">
+<div class="full">
+<label>Media File (Image / Video)</label>
+<input type="file" id="mediaFile" accept="image/*,video/*">
+</div>
+<div>
+<label>Title</label>
+<input id="mediaTitle" placeholder="e.g. Bridal Makeup">
+</div>
+<div>
+<label>Section</label>
+<select id="mediaSection">
+<option value="gallery">Gallery</option>
+<option value="experience">Customer Experience</option>
+</select>
+</div>
+<div>
+<label>Category</label>
+<select id="mediaCategory">
+<option value="makeup">Makeup</option>
+<option value="hair">Hair</option>
+<option value="skin">Skin</option>
+<option value="henna">Heena Art</option>
+<option value="other">Other</option>
+</select>
+</div>
+<div>
+<label>Image / Video crop</label>
+<select id="mediaFit">
+<option value="cover">Cover (Fill frame)</option>
+<option value="contain">Contain (Show full)</option>
+</select>
+</div>
+<div class="full">
+<label>Crop horizontal position (0–100%)</label>
+<input type="range" id="cropX" min="0" max="100" value="50">
+</div>
+<div class="full">
+<label>Crop vertical position (0–100%)</label>
+<input type="range" id="cropY" min="0" max="100" value="50">
+</div>
+<div class="full">
+<label>Optional experience description</label>
+<textarea id="mediaDescription" placeholder="Write a customer experience..."></textarea>
+</div>
+</div>
+
+<button class="admin-btn" id="uploadBtn">UPLOAD NEW MEDIA</button>
+<button class="admin-btn secondary" id="updateBtn" disabled>UPDATE SELECTED ITEM</button>
+<button class="admin-btn secondary" id="cancelEditBtn">CANCEL SELECTION</button>
+<button class="admin-btn danger" id="logoutBtn">LOG OUT</button>
+
+<div id="adminStatus"></div>
+<h3 style="margin-top:30px">Published Content</h3>
+<div class="admin-list" id="adminList"></div>
+</div>
+</div>
+</div>
+
+<script>
+/* =====================================
+   SUPABASE CONFIGURATION
+===================================== */
+
+const SUPABASE_URL = "YOUR_SUPABASE_PROJECT_URL";
+const SUPABASE_ANON_KEY = "YOUR_SUPABASE_PUBLISHABLE_OR_ANON_KEY";
+
+const BUCKET = "beauty-gallery";
+const TABLE = "media_items";
+
+let db = null;
+let selectedItem = null;
+let allMedia = [];
+
+/* =====================================
+   INITIALIZATION
+===================================== */
+
+const $ = id => document.getElementById(id);
+
+$("year").textContent = new Date().getFullYear();
+
+$("menuBtn").onclick = () => $("nav").classList.toggle("show");
+
+document.querySelectorAll("#nav a").forEach(a => {
+ a.onclick = () => $("nav").classList.remove("show");
+});
+
+if (SUPABASE_URL.startsWith("https://") &&
+    SUPABASE_ANON_KEY !== "YOUR_SUPABASE_PUBLISHABLE_OR_ANON_KEY") {
+ db = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+ loadPublicMedia();
+} else {
+ $("galleryGrid").innerHTML = '<p class="empty">Connect Supabase to publish your gallery.</p>';
+ $("experienceGrid").innerHTML = '<p class="empty">Customer experiences will appear here.</p>';
+}
+
+/* =====================================
+   PUBLIC GALLERY
+===================================== */
+
+function escapeHTML(value="") {
+ return String(value).replace(/[&<>"']/g, c => ({
+  "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+ })[c]);
+}
+
+function createMediaElement(item) {
+ const isVideo = item.media_type === "video";
+ const pos = item.object_position || "50% 50%";
+ const fit = item.object_fit || "cover";
+
+ if (isVideo) {
+  return `<video src="${escapeHTML(item.media_url)}" controls playsinline preload="metadata" style="object-fit:${fit};object-position:${pos}"></video>`;
+ }
+
+ return `<img src="${escapeHTML(item.media_url)}" alt="${escapeHTML(item.title)}" loading="lazy" style="object-fit:${fit};object-position:${pos}">`;
+}
+
+async function loadPublicMedia() {
+ if (!db) return;
+
+ const {data,error} = await db.from(TABLE)
+  .select("*").order("created_at",{ascending:false});
+
+ if (error) {
+  $("galleryGrid").innerHTML = '<p class="empty">Gallery could not load. Check Supabase setup.</p>';
+  return;
+ }
+
+ allMedia = data || [];
+ renderGallery("all");
+ renderExperiences();
+}
+
+function renderGallery(filter) {
+ let items = allMedia.filter(item => item.section === "gallery");
+
+ if (filter === "videos") items = items.filter(i => i.media_type === "video");
+ else if (filter !== "all") items = items.filter(i => i.category === filter);
+
+ $("galleryGrid").innerHTML = items.length ? items.map(item => `
+  <div class="media-card" data-id="${escapeHTML(item.id)}">
+   ${createMediaElement(item)}
+   <div class="media-title">${escapeHTML(item.title || "The Beauty Layer")}</div>
+  </div>
+ `).join("") : '<p class="empty">No media available in this category yet.</p>';
+}
+
+function renderExperiences() {
+ const items = allMedia.filter(i => i.section === "experience");
+
+ $("experienceGrid").innerHTML = items.length ? items.map(item => `
+  <article class="experience-card">
+   <h3>${escapeHTML(item.title || "Customer Experience")}</h3>
+   <p>${escapeHTML(item.description || "")}</p>
+   ${createMediaElement(item)}
+  </article>
+ `).join("") : '<p class="empty">Our customer experiences will appear here soon.</p>';
+}
+
+document.querySelectorAll(".filter").forEach(button => {
+ button.onclick = () => {
+  document.querySelectorAll(".filter").forEach(b => b.classList.remove("active"));
+  button.classList.add("active");
+  renderGallery(button.dataset.filter);
+ };
+});
+
+$("galleryGrid").addEventListener("click",e => {
+ const card = e.target.closest(".media-card");
+ if (!card || e.target.tagName === "VIDEO") return;
+
+ const item = allMedia.find(i => i.id === card.dataset.id);
+ if (!item) return;
+
+ $("lightboxContent").innerHTML = createMediaElement(item);
+ $("lightbox").classList.add("open");
+});
+
+$("lightboxClose").onclick = () => {
+ $("lightbox").classList.remove("open");
+ $("lightboxContent").innerHTML = "";
+};
+
+/* =====================================
+   ADMIN ACCESS
+===================================== */
+
+$("adminTrigger").onclick = async () => {
+ $("adminOverlay").style.display = "block";
+ if (db) {
+  const {data} = await db.auth.getSession();
+  if (data.session) showDashboard();
+ }
+};
+
+$("adminClose").onclick = () => {
+ $("adminOverlay").style.display = "none";
+};
+
+function status(message) {
+ $("adminStatus").textContent = message;
+}
+
+function showDashboard() {
+ $("loginPanel").style.display = "none";
+ $("adminDashboard").style.display = "block";
+ loadAdminList();
+}
+
+function showLogin() {
+ $("loginPanel").style.display = "block";
+ $("adminDashboard").style.display = "none";
+}
+
+$("loginBtn").onclick = async () => {
+ if (!db) return status("Please configure Supabase first.");
+
+ const email = $("email").value.trim();
+ const password = $("password").value;
+
+ const {error} = await db.auth.signInWithPassword({email,password});
+
+ if (error) return status(error.message);
+
+ showDashboard();
+ status("Successfully logged in.");
+};
+
+$("logoutBtn").onclick = async () => {
+ await db.auth.signOut();
+ selectedItem = null;
+ showLogin();
+ status("Logged out.");
+};
+
+/* =====================================
+   ADMIN CONTENT LIST
+===================================== */
+
+async function loadAdminList() {
+ if (!db) return;
+
+ const {data,error} = await db.from(TABLE)
+  .select("*").order("created_at",{ascending:false});
+
+ if (error) return status(error.message);
+
+ allMedia = data || [];
+
+ $("adminList").innerHTML = allMedia.map(item => `
+  <div class="admin-item">
+   ${createMediaElement(item)}
+   <p><b>${escapeHTML(item.title)}</b></p>
+   <p>${escapeHTML(item.section)} · ${escapeHTML(item.category)}</p>
+   <button class="admin-btn secondary edit-item" data-id="${escapeHTML(item.id)}">EDIT / CROP</button>
+   <button class="admin-btn danger delete-item" data-id="${escapeHTML(item.id)}">DELETE</button>
+  </div>
+ `).join("") || "<p>No uploaded content yet.</p>";
+
+ renderGallery("all");
+ renderExperiences();
+}
+
+$("adminList").addEventListener("click",async e => {
+ const edit = e.target.closest(".edit-item");
+ const del = e.target.closest(".delete-item");
+
+ if (edit) {
+  const item = allMedia.find(i => i.id === edit.dataset.id);
+  if (!item) return;
+
+  selectedItem = item;
+
+  $("mediaTitle").value = item.title || "";
+  $("mediaSection").value = item.section || "gallery";
+  $("mediaCategory").value = item.category || "other";
+  $("mediaDescription").value = item.description || "";
+  $("mediaFit").value = item.object_fit || "cover";
+
+  const position = (item.object_position || "50% 50%").split(" ");
+  $("cropX").value = parseInt(position[0]) || 50;
+  $("cropY").value = parseInt(position[1]) || 50;
+
+  $("updateBtn").disabled = false;
+  status("Selected: " + item.title + ". Change crop settings and click UPDATE.");
+  window.scrollTo({top:0,behavior:"smooth"});
+ }
+
+ if (del) {
+  if (!confirm("Are you sure you want to delete this content?")) return;
+
+  const item = allMedia.find(i => i.id === del.dataset.id);
+  if (!item) return;
+
+  const {error} = await db.from(TABLE).delete().eq("id",item.id);
+
+  if (error) return status(error.message);
+
+  if (item.storage_path) {
+   await db.storage.from(BUCKET).remove([item.storage_path]);
+  }
+
+  selectedItem = null;
+  status("Content deleted.");
+  loadAdminList();
+ }
+});
+
+/* =====================================
+   UPLOAD NEW MEDIA
+===================================== */
+
+$("uploadBtn").onclick = async () => {
+ if (!db) return status("Supabase is not configured.");
+
+ const file = $("mediaFile").files[0];
+ if (!file) return status("Please select a photo or video.");
+
+ const isImage = file.type.startsWith("image/");
+ const isVideo = file.type.startsWith("video/");
+
+ if (!isImage && !isVideo) return status("Only image and video files are allowed.");
+
+ const maxSize = isVideo ? 100 * 1024 * 1024 : 10 * 1024 * 1024;
+
+ if (file.size > maxSize) return status("File too large. Image max 10 MB, video max 100 MB.");
+
+ const {data:auth} = await db.auth.getUser();
+ if (!auth.user) return status("Please login first.");
+
+ const ext = file.name.split(".").pop().replace(/[^a-zA-Z0-9]/g,"");
+ const path = auth.user.id + "/" + crypto.randomUUID() + "." + ext;
+
+ status("Uploading media...");
+
+ const {error:uploadError} = await db.storage.from(BUCKET)
+  .upload(path,file,{contentType:file.type,upsert:false});
+
+ if (uploadError) return status(uploadError.message);
+
+ const {data:urlData} = db.storage.from(BUCKET).getPublicUrl(path);
+
+ const position = $("cropX").value + "% " + $("cropY").value + "%";
+
+ const payload = {
+  title:$("mediaTitle").value.trim() || file.name,
+  section:$("mediaSection").value,
+  category:$("mediaCategory").value,
+  description:$("mediaDescription").value.trim(),
+  media_type:isVideo ? "video" : "image",
+  media_url:urlData.publicUrl,
+  storage_path:path,
+  object_fit:$("mediaFit").value,
+  object_position:position
+ };
+
+ const {error:insertError} = await db.from(TABLE).insert(payload);
+
+ if (insertError) {
+  await db.storage.from(BUCKET).remove([path]);
+  return status(insertError.message);
+ }
+
+ $("mediaFile").value = "";
+ status("Upload successful!");
+ resetSelection();
+ loadAdminList();
+};
+
+/* =====================================
+   UPDATE / CROP EXISTING CONTENT
+===================================== */
+
+$("updateBtn").onclick = async () => {
+ if (!selectedItem) return status("Select an item first.");
+
+ const position = $("cropX").value + "% " + $("cropY").value + "%";
+
+ const updates = {
+  title:$("mediaTitle").value.trim(),
+  section:$("mediaSection").value,
+  category:$("mediaCategory").value,
+  description:$("mediaDescription").value.trim(),
+  object_fit:$("mediaFit").value,
+  object_position:position
+ };
+
+ const {error} = await db.from(TABLE)
+  .update(updates).eq("id",selectedItem.id);
+
+ if (error) return status(error.message);
+
+ status("Content and crop settings updated.");
+ resetSelection();
+ loadAdminList();
+};
+
+function resetSelection() {
+ selectedItem = null;
+ $("updateBtn").disabled = true;
+ $("mediaTitle").value = "";
+ $("mediaDescription").value = "";
+ $("mediaFile").value = "";
+ $("cropX").value = 50;
+ $("cropY").value = 50;
+}
+
+$("cancelEditBtn").onclick = resetSelection;
+
+</script>
 </body>
 </html>
