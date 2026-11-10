@@ -1,356 +1,128 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Élan Beauty Studio</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: 'Poppins', sans-serif;
-    background: #fffaf7;
-    color: #382b2b;
-}
-
-header {
-    background: #fff;
-    padding: 20px 8%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 15px #00000008;
-}
-
-.logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 28px;
-    color: #b47b72;
-}
-
-nav a {
-    text-decoration: none;
-    color: #443737;
-    margin-left: 25px;
-    font-size: 14px;
-}
-
-nav a:hover {
-    color: #bd8278;
-}
-
-.btn {
-    background: #bd8278;
-    color: white;
-    padding: 13px 25px;
-    border-radius: 30px;
-    text-decoration: none;
-    display: inline-block;
-    transition: .3s;
-}
-
-.btn:hover {
-    background: #8f5b55;
-    transform: translateY(-3px);
-}
-
-.hero {
-    min-height: 580px;
-    display: flex;
-    align-items: center;
-    padding: 70px 8%;
-    background: linear-gradient(90deg,#fff4ef,#f7e5df);
-}
-
-.hero-content {
-    width: 50%;
-}
-
-.hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 60px;
-    line-height: 1.15;
-    margin: 20px 0;
-    color: #573d3a;
-}
-
-.hero p {
-    color: #806d68;
-    margin-bottom: 30px;
-    line-height: 1.8;
-}
-
-.hero img {
-    width: 50%;
-    height: 440px;
-    object-fit: cover;
-    border-radius: 180px 180px 10px 10px;
-}
-
-section {
-    padding: 85px 8%;
-}
-
-.heading {
-    text-align: center;
-    margin-bottom: 45px;
-}
-
-.heading h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 42px;
-    color: #754f49;
-}
-
-.heading p {
-    color: #99847e;
-    margin-top: 10px;
-}
-
-.services {
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 25px;
-}
-
-.card {
-    background: white;
-    padding: 15px;
-    text-align: center;
-    border-radius: 12px;
-    box-shadow: 0 5px 25px #00000008;
-    transition: .3s;
-}
-
-.card:hover {
-    transform: translateY(-8px);
-}
-
-.card img {
-    width: 100%;
-    height: 230px;
-    object-fit: cover;
-    border-radius: 8px;
-}
-
-.card h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 23px;
-    margin: 18px 0 8px;
-}
-
-.card p {
-    color: #927d77;
-    font-size: 14px;
-    margin-bottom: 15px;
-}
-
-.about {
-    background: #f7e9e3;
-    text-align: center;
-}
-
-.about p {
-    max-width: 750px;
-    margin: 20px auto;
-    line-height: 1.9;
-    color: #78635e;
-}
-
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 15px;
-}
-
-.gallery img {
-    width: 100%;
-    height: 260px;
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-.booking {
-    background: #593e3a;
-    color: white;
-    text-align: center;
-}
-
-.booking h2 {
-    font-family: 'Playfair Display',serif;
-    font-size: 42px;
-    margin-bottom: 15px;
-}
-
-.booking p {
-    margin-bottom: 30px;
-    color: #ead8d2;
-}
-
-.booking .btn {
-    background: #d5a99a;
-    color: #392824;
-}
-
-footer {
-    background: #2e2220;
-    color: white;
-    padding: 35px 8%;
-    text-align: center;
-}
-
-footer p {
-    color: #c9b8b2;
-    font-size: 13px;
-    margin-top: 10px;
-}
-
-@media(max-width:768px) {
-    header {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    nav {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 12px;
-    }
-
-    nav a {
-        margin: 0;
-        font-size: 12px;
-    }
-
-    .hero {
-        flex-direction: column;
-        gap: 30px;
-        text-align: center;
-    }
-
-    .hero-content,.hero img {
-        width: 100%;
-    }
-
-    .hero h1 {
-        font-size: 42px;
-    }
-
-    .services,.gallery {
-        grid-template-columns: 1fr;
-    }
-}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#4b071d">
+  <meta name="description" content="The Beauty Layer Beauty Parlour in Soda Saroli, Dehradun. Bridal makeup, facials, hair, waxing, nails and more.">
+  <title>The Beauty Layer | Beauty Parlour, Dehradun</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-
-<header>
-    <div class="logo">Élan Beauty</div>
-    <nav>
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#contact">Contact</a>
-    </nav>
-</header>
-
-<div class="hero" id="home">
-    <div class="hero-content">
-        <p>WELCOME TO ÉLAN BEAUTY STUDIO</p>
-        <h1>Feel Beautiful.<br>Feel Unforgettable.</h1>
-        <p>Discover the beauty within you with our premium beauty and skincare services.</p>
-        <a class="btn" href="#contact">Book Appointment</a>
-    </div>
-
-    <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=900" alt="Beauty portrait">
-</div>
-
-<section id="services">
-    <div class="heading">
-        <h2>Our Services</h2>
-        <p>Luxury care for your beauty</p>
-    </div>
-
-    <div class="services">
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=700" alt="Makeup">
-            <h3>Bridal Makeup</h3>
-            <p>Look stunning on your special day.</p>
-            <a class="btn" href="#contact">Book Now</a>
-        </div>
-
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=700" alt="Facial">
-            <h3>Skin & Facial</h3>
-            <p>Refresh and pamper your skin.</p>
-            <a class="btn" href="#contact">Book Now</a>
-        </div>
-
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1560869713-7d0a29430803?w=700" alt="Hair styling">
-            <h3>Hair Styling</h3>
-            <p>Give your hair a beautiful makeover.</p>
-            <a class="btn" href="#contact">Book Now</a>
-        </div>
-    </div>
-</section>
-
-<section class="about" id="about">
-    <div class="heading">
-        <h2>About Our Studio</h2>
-    </div>
-    <p>
-        Welcome to Élan Beauty Studio, where beauty meets elegance.
-        We believe every woman deserves to feel confident and beautiful.
-        Our team focuses on personalized care and a relaxing experience.
-    </p>
-</section>
-
-<section id="gallery">
-    <div class="heading">
-        <h2>Our Gallery</h2>
-        <p>A glimpse of beauty and elegance</p>
-    </div>
-
-    <div class="gallery">
-        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=700" alt="Salon">
-        <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=700" alt="Beauty">
-        <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=700" alt="Makeup">
-    </div>
-</section>
-
-<section class="booking" id="contact">
-    <h2>Ready for a Makeover?</h2>
-    <p>Book your appointment today and let us pamper you.</p>
-
-    <!-- Replace with your WhatsApp number -->
-    <a class="btn"
-       href="https://wa.me/91XXXXXXXXXX?text=Hello%2C%20I%20want%20to%20book%20an%20appointment"
-       target="_blank">
-       Book on WhatsApp
+  <div class="topline">A little luxury, a lot of confidence <span>✦</span> Soda Saroli, Dehradun</div>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="The Beauty Layer home">
+      <span class="brand-mark">✿</span><span>THE BEAUTY <b>LAYER</b><small>BEAUTY PARLOUR</small></span>
     </a>
-</section>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
+    <nav id="mainNav">
+      <a href="#home">Home</a><a href="#services">Services</a><a href="#bridal">Bridal</a>
+      <a href="#gallery">Gallery</a><a href="#experiences">Experiences</a><a href="#contact">Contact</a>
+    </nav>
+    <a class="button button-small header-book" href="https://wa.me/919389172061?text=Hello%20The%20Beauty%20Layer%2C%20I%20would%20like%20to%20book%20an%20appointment." target="_blank" rel="noopener">Book an appointment ↗</a>
+  </header>
 
-<footer>
-    <h2 class="logo">Élan Beauty Studio</h2>
-    <p>Beauty • Elegance • Confidence</p>
-    <p>© 2026 Élan Beauty Studio. All Rights Reserved.</p>
-</footer>
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <p class="eyebrow"><span></span> BEAUTY, WITH A PERSONAL TOUCH</p>
+        <h1>Feel beautiful.<br><em>Feel unforgettable.</em></h1>
+        <p class="hero-intro">A welcoming beauty space for the little self-care moments and the once-in-a-lifetime celebrations.</p>
+        <div class="hero-actions">
+          <a class="button" href="https://wa.me/919389172061?text=Hello%20The%20Beauty%20Layer%2C%20I%20would%20like%20to%20book%20an%20appointment." target="_blank" rel="noopener">Book on WhatsApp <span>↗</span></a>
+          <a class="text-link" href="#services">Explore our services <span>↓</span></a>
+        </div>
+        <div class="hero-note"><span class="note-star">✦</span><div><b>Made for your moment</b><small>Bridal · Skin · Hair · Beauty</small></div></div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-photo" role="img" aria-label="Bridal beauty inspiration"></div>
+        <div class="hero-stamp"><span>THE BEAUTY LAYER</span><b>BEAUTY<br>BEGINS<br>WITH YOU</b><i>✿</i></div>
+        <div class="hero-caption">Your glow, your way.</div>
+      </div>
+      <div class="hero-deco">✳</div>
+    </section>
 
+    <section class="trust-strip">
+      <div><b>01</b><span>Personalised care</span></div><i>✦</i>
+      <div><b>02</b><span>Beauty for every occasion</span></div><i>✦</i>
+      <div><b>03</b><span>Warm, welcoming experience</span></div>
+    </section>
+
+    <section class="section services-section" id="services">
+      <div class="section-heading">
+        <p class="eyebrow">A LITTLE SOMETHING FOR YOU</p>
+        <h2>Our <em>services</em></h2>
+        <p>From everyday self-care to your most special days.</p>
+      </div>
+      <div class="service-grid" id="serviceGrid">
+        <article class="service-card"><div class="service-icon">✿</div><h3>Facial</h3><p>Thoughtful skin care to help you feel fresh and renewed.</p></article>
+        <article class="service-card"><div class="service-icon">⌁</div><h3>Eyebrow</h3><p>Shape and define your look with a little attention to detail.</p></article>
+        <article class="service-card"><div class="service-icon">✧</div><h3>Waxing</h3><p>Beauty essentials for a smooth, feel-good finish.</p></article>
+        <article class="service-card"><div class="service-icon">❀</div><h3>Manicure & Pedicure</h3><p>A relaxing refresh from fingertips to toes.</p></article>
+        <article class="service-card"><div class="service-icon">♧</div><h3>Hair Cutting</h3><p>A fresh shape and style that feels like you.</p></article>
+        <article class="service-card"><div class="service-icon">♡</div><h3>Root Touch Up</h3><p>Keep your colour looking neat and beautifully refreshed.</p></article>
+        <article class="service-card"><div class="service-icon">☼</div><h3>Hair Spa</h3><p>Give your hair a little extra care and attention.</p></article>
+        <article class="service-card"><div class="service-icon">❋</div><h3>Heena Art</h3><p>Intricate henna details for celebrations and special moments.</p></article>
+        <article class="service-card"><div class="service-icon">✦</div><h3>Makeup</h3><p>Looks created to complement your style and occasion.</p></article>
+      </div>
+      <div class="center"><a class="button button-outline" href="https://wa.me/919389172061?text=Hello%2C%20please%20share%20your%20service%20details." target="_blank" rel="noopener">Ask about a service ↗</a></div>
+    </section>
+
+    <section class="bridal-section" id="bridal">
+      <div class="bridal-image"></div>
+      <div class="bridal-copy">
+        <p class="eyebrow">FOR YOUR ONCE-IN-A-LIFETIME MOMENT</p>
+        <h2>Every bride deserves<br><em>to feel extraordinary.</em></h2>
+        <p>Celebrate your special day with bridal makeup and pre-wedding makeup services. Get in touch to discuss your look and appointment.</p>
+        <a class="button button-light" href="https://wa.me/919389172061?text=Hello%20The%20Beauty%20Layer%2C%20I%20want%20to%20enquire%20about%20bridal%20makeup." target="_blank" rel="noopener">Enquire for bridal makeup ↗</a>
+      </div>
+    </section>
+
+    <section class="section gallery-section" id="gallery">
+      <div class="section-heading split-heading">
+        <div><p class="eyebrow">A LOOK INSIDE OUR WORLD</p><h2>Beauty in <em>every detail</em></h2></div>
+        <p>Browse our work, moments and transformations.</p>
+      </div>
+      <div class="filter-row" id="galleryFilters">
+        <button class="filter active" data-filter="all">All</button>
+        <button class="filter" data-filter="makeup">Makeup</button>
+        <button class="filter" data-filter="hair">Hair</button>
+        <button class="filter" data-filter="skin">Skin</button>
+        <button class="filter" data-filter="henna">Heena art</button>
+        <button class="filter" data-filter="videos">Videos</button>
+      </div>
+      <div class="media-grid" id="galleryGrid">
+        <div class="empty-state">Our latest photos and videos will appear here.</div>
+      </div>
+    </section>
+
+    <section class="experience-section" id="experiences">
+      <div class="section-heading">
+        <p class="eyebrow">KIND WORDS & REAL MOMENTS</p>
+        <h2>Shared <em>experiences</em></h2>
+        <p>Customer stories, photos and videos from special moments.</p>
+      </div>
+      <div class="experience-grid" id="experienceGrid"><div class="empty-state">Customer experiences will appear here.</div></div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div><p class="eyebrow">LET'S MAKE TIME FOR YOU</p><h2>Your next beauty<br><em>moment starts here.</em></h2></div>
+      <div class="contact-details">
+        <p><span>CALL / WHATSAPP</span><a href="tel:+919389172061">9389172061</a></p>
+        <p><span>VISIT US</span><b>Soda Saroli, Dehradun</b></p>
+        <a class="button button-light" href="https://wa.me/919389172061?text=Hello%20The%20Beauty%20Layer%2C%20I%20would%20like%20to%20book%20an%20appointment." target="_blank" rel="noopener">Chat with us ↗</a>
+      </div>
+    </section>
+  </main>
+
+  <footer><a class="brand footer-brand" href="#home"><span class="brand-mark">✿</span><span>THE BEAUTY <b>LAYER</b><small>BEAUTY PARLOUR</small></span></a><p>Beauty · Elegance · Confidence</p><small>© <span id="year"></span> The Beauty Layer. All rights reserved.</small></footer>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true"><button id="lightboxClose" aria-label="Close">×</button><div id="lightboxContent"></div></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
